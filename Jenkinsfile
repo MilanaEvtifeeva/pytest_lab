@@ -1,9 +1,15 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+        stage('Check Python Version') {
+            steps {
+                bat 'C:/Users/Milana/AppData/Local/Programs/Python/Python313/python.exe --version'
             }
         }
         stage('Setup Python') {

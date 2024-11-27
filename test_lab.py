@@ -1,5 +1,5 @@
 #Eвтифеева Милана 107б
-import pytest
+import ptest
 from lab import *
 
 def test_multiply():
