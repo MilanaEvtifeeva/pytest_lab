@@ -8,9 +8,9 @@ pipeline {
         }
         stage('Setup Python') {
             steps {
-                sh '''
-                python3 -m venv venv
-                source venv/bin/activate
+                bat '''
+                python -m venv venv
+                call venv\\Scripts\\activate.bat
                 pip install --upgrade pip
                 pip install -r requirements.txt
                 '''
@@ -18,7 +18,10 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh 'pytest --junitxml=report.xml'
+                bat '''
+                call venv\\Scripts\\activate.bat
+                pytest --junitxml=report.xml
+                '''
             }
         }
         stage('Archive Results') {
